@@ -1,0 +1,2 @@
+## Blender Script Here let me Google
+The script basically opens a web browser, then uses google to run a blender site specific search. So you would run a google search on blender using something like this: "site:blenderartists.org Python how do I make a panel".
