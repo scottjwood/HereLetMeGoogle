@@ -114,7 +114,6 @@ class HereLetMePanel(bpy.types.Panel):
             row.prop(search_props, "term_rendering")
             row = layout.row(align=True)
             row.prop(search_props, "term_osl")
-            # row.prop(search_props, "term_rendering")
 
 
 ################## ################## ################## ############

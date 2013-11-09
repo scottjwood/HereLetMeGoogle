@@ -31,6 +31,7 @@ bl_info = {
 
 
 import bpy
+from .HereLetMeGoogle import *
 from bpy.props import StringProperty, BoolProperty, EnumProperty
 
 ### Define Classes to register ###
