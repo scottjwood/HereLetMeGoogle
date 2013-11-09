@@ -1,2 +1,2 @@
-## Blender Script Here let me Google
-The script basically opens a web browser, then uses google to run a blender site specific search. So you would run a google search on blender using something like this: "site:blenderartists.org Python how do I make a panel".
+## Blender Script - Here let me Google
+The script adds a search box on the toolshelf in 3d view in Blender. It opens a web browser, then uses google to run a blender site specific search. It's a quick way to make a blender specific search term like this "site:blenderartists.org Python how do I make a panel".

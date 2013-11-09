@@ -36,7 +36,7 @@ class HereLetMeProperties(bpy.types.PropertyGroup):
     engines = [
         ('google.com', 'Google', "0"),
         ('blenderartists.org', 'BlenderArtists', "1"),
-        ('blender.org/documentation/blender_python_api_2_62_1', 'Blender.org API', "2"),
+        ('blender.org/documentation/blender_python_api_2_69_1', 'Blender.org API', "2"),
         ('blendercookie.com', 'BlenderCookie', "3"),
         ('blenderguru.com', 'BlenderGuru', "4"),
         ('graphicall.com', 'GraphicAll', "5"),
@@ -44,7 +44,8 @@ class HereLetMeProperties(bpy.types.PropertyGroup):
         ('stackoverflow.com', 'StackOverflow', "7"),
         ('svn.blender.org/svnroot/bf-extensions', 'SVN extensions', '8'),
         ('sourceforge.net/projects/blenderpython', 'Sourceforge blender', '9'),
-        ('customURL', 'Custom', "10")
+        ('blender.stackexchange.com/', 'Blender Stackexchange', '10'),
+        ('customURL', 'Custom', "11")
         ]
 
     engine = bpy.props.EnumProperty(name="Search Site", description="What site to search", default="blenderartists.org", items=engines)
@@ -60,6 +61,7 @@ class HereLetMeProperties(bpy.types.PropertyGroup):
     term_cycles = bpy.props.BoolProperty(name="Cycles", description="Add Cycles to search", default=False)
     term_rigging = bpy.props.BoolProperty(name="Rigging", description="Add Rigging to search", default=False)
     term_rendering = bpy.props.BoolProperty(name="Rendering", description="Add Rendering to search", default=False)
+    term_osl = bpy.props.BoolProperty(name="OSL", description="Add OSL to search", default=False)
 
 
 class HereLetMePanel(bpy.types.Panel):
@@ -76,6 +78,7 @@ class HereLetMePanel(bpy.types.Panel):
         col = layout.column(align=True)
         row = col.row(align=True)
         row.prop(search_props, "search_string", text="")
+        row = col.row()
         row = col.row()
         row.prop(search_props, "settings")
         row.operator("wm.hereletme", text='Search', icon='VIEWZOOM')
@@ -109,6 +112,9 @@ class HereLetMePanel(bpy.types.Panel):
             row = layout.row(align=True)
             row.prop(search_props, "term_cycles")
             row.prop(search_props, "term_rendering")
+            row = layout.row(align=True)
+            row.prop(search_props, "term_osl")
+            # row.prop(search_props, "term_rendering")
 
 
 ################## ################## ################## ############
@@ -141,6 +147,8 @@ class OBJECT_OT_hereletme(bpy.types.Operator):
             myterms += "cycles+"
         if search_props.term_rendering:
             myterms += "Rendering+"
+        if search_props.term_osl:
+            myterms += "OSL+"
 
         # Search engines
         searchengine = 'https://www.google.com/search?&q=site%3A'
