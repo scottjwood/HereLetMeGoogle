@@ -36,11 +36,11 @@ class HereLetMeProperties(bpy.types.PropertyGroup):
     engines = [
         ('google.com', 'Google', "0"),
         ('blenderartists.org', 'BlenderArtists', "1"),
-        ('blender.org/documentation/blender_python_api_2_69_1', 'Blender.org API', "2"),
-        ('blendercookie.com', 'BlenderCookie', "3"),
-        ('blenderguru.com', 'BlenderGuru', "4"),
-        ('graphicall.com', 'GraphicAll', "5"),
-        ('pasteall.org', 'PasteAll', "6"),
+        ('wiki.blender.org', 'Blender Wiki', "2"),
+        ('blender.org/documentation/blender_python_api_2_69_1', 'Blender.org API', "3"),
+        ('blendercookie.com', 'BlenderCookie', "4"),
+        ('blenderguru.com', 'BlenderGuru', "5"),
+        ('graphicall.com', 'GraphicAll', "6"),
         ('stackoverflow.com', 'StackOverflow', "7"),
         ('svn.blender.org/svnroot/bf-extensions', 'SVN extensions', '8'),
         ('sourceforge.net/projects/blenderpython', 'Sourceforge blender', '9'),
@@ -151,7 +151,10 @@ class OBJECT_OT_hereletme(bpy.types.Operator):
 
         # Search engines
         searchengine = 'https://www.google.com/search?&q=site%3A'
-        searchsite = search_props.engine
+        if search_props.engine == "customURL":
+            searchsite = search_props.custom_string
+        else:
+            searchsite = search_props.engine
         terms = myterms.replace(" ", "+")
         search = search_props.search_string.replace(" ", "+")
         if search_props.engine == 'google.com':
