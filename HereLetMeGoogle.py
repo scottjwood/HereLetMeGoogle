@@ -69,6 +69,7 @@ class HereLetMePanel(bpy.types.Panel):
     bl_idname = "OBJECT_PT_hereletme"
     bl_space_type = "VIEW_3D"
     bl_region_type = "TOOLS"
+    bl_category = 'Tools'
     bl_context = "objectmode"
 
     def draw(self, context):
